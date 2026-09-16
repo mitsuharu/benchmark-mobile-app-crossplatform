@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NativeApp">
 
+        <!-- A launcher start always comes back to the home screen. Without
+             this, Android resumes the task where it left off, so a cold start
+             after the search screen was open would begin there — the Flutter
+             and Expo apps have a single activity and always start at home. -->
         <activity
             android:name=".MainActivity"
+            android:clearTaskOnLaunch="true"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
