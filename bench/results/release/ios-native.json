@@ -1,0 +1,227 @@
+{
+  "framework": "native",
+  "platform": "ios",
+  "build": "release",
+  "physical": false,
+  "appId": "com.example.benchmark.nativeapp",
+  "device": {
+    "name": "iPhone 17",
+    "id": "DDB021A1-E3DE-4F7B-BAD5-165E06726C63",
+    "label": "iPhone 17 シミュレータ（iOS 26.5）"
+  },
+  "measuredAt": "2026-09-16T09:16:19.755Z",
+  "agentDevice": "0.21.1",
+  "iterations": 5,
+  "warmup": 1,
+  "appSizeBytes": 951184,
+  "summary": {
+    "timingsMs": {
+      "coldStartMs": {
+        "n": 5,
+        "median": 913,
+        "mean": 933.2,
+        "min": 888,
+        "max": 1048,
+        "stdev": 59.219591352862274
+      },
+      "searchOpenColdMs": {
+        "n": 5,
+        "median": 65,
+        "mean": 66.8,
+        "min": 64,
+        "max": 74,
+        "stdev": 3.655133376499413
+      },
+      "searchOpenWarmMs": {
+        "n": 5,
+        "median": 22,
+        "mean": 21.8,
+        "min": 19,
+        "max": 24,
+        "stdev": 1.7204650534085253
+      },
+      "searchRenderMs": {
+        "n": 5,
+        "median": 62,
+        "mean": 63.4,
+        "min": 59,
+        "max": 71,
+        "stdev": 4.127953488110059
+      },
+      "searchToHomeMs": {
+        "n": 5,
+        "median": 21,
+        "mean": 21.4,
+        "min": 21,
+        "max": 23,
+        "stdev": 0.8
+      },
+      "commandMs": {
+        "n": 5,
+        "median": 8,
+        "mean": 7.4,
+        "min": 6,
+        "max": 8,
+        "stdev": 0.7999999999999999
+      }
+    },
+    "memoryKb": {
+      "homeIdle": {
+        "n": 5,
+        "median": 278448,
+        "mean": 281555.2,
+        "min": 277584,
+        "max": 295232,
+        "stdev": 6846.380369217007
+      },
+      "searchOpened": {
+        "n": 5,
+        "median": 315408,
+        "mean": 315526.4,
+        "min": 314880,
+        "max": 316000,
+        "stdev": 427.4845494283975
+      },
+      "afterSearch": {
+        "n": 5,
+        "median": 336768,
+        "mean": 333161.6,
+        "min": 318016,
+        "max": 337216,
+        "stdev": 7576.297185301009
+      },
+      "backToHome": {
+        "n": 5,
+        "median": 338960,
+        "mean": 335062.4,
+        "min": 318656,
+        "max": 339536,
+        "stdev": 8209.310460690349
+      }
+    },
+    "startupRoundtripMs": {
+      "n": 5,
+      "median": 1171,
+      "mean": 1197.4,
+      "min": 1127,
+      "max": 1324,
+      "stdev": 70.20712214583361
+    }
+  },
+  "runs": [
+    {
+      "index": 0,
+      "warmup": true,
+      "startupRoundtripMs": 1561,
+      "memoryKb": {
+        "homeIdle": 277872,
+        "searchOpened": 314112,
+        "afterSearch": 317056,
+        "backToHome": 316992
+      },
+      "timings": {
+        "coldStartMs": 1217,
+        "searchOpenColdMs": 188,
+        "searchOpenWarmMs": 24,
+        "searchRenderMs": 185,
+        "searchToHomeMs": 32,
+        "commandMs": 8
+      }
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "startupRoundtripMs": 1324,
+      "memoryKb": {
+        "homeIdle": 295232,
+        "searchOpened": 314880,
+        "afterSearch": 318016,
+        "backToHome": 318656
+      },
+      "timings": {
+        "coldStartMs": 1048,
+        "searchOpenColdMs": 74,
+        "searchOpenWarmMs": 23,
+        "searchRenderMs": 71,
+        "searchToHomeMs": 23,
+        "commandMs": 8
+      }
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "startupRoundtripMs": 1218,
+      "memoryKb": {
+        "homeIdle": 278016,
+        "searchOpened": 315408,
+        "afterSearch": 336768,
+        "backToHome": 338688
+      },
+      "timings": {
+        "coldStartMs": 927,
+        "searchOpenColdMs": 65,
+        "searchOpenWarmMs": 22,
+        "searchRenderMs": 64,
+        "searchToHomeMs": 21,
+        "commandMs": 8
+      }
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "startupRoundtripMs": 1171,
+      "memoryKb": {
+        "homeIdle": 277584,
+        "searchOpened": 315344,
+        "afterSearch": 336624,
+        "backToHome": 338960
+      },
+      "timings": {
+        "coldStartMs": 913,
+        "searchOpenColdMs": 66,
+        "searchOpenWarmMs": 19,
+        "searchRenderMs": 61,
+        "searchToHomeMs": 21,
+        "commandMs": 6
+      }
+    },
+    {
+      "index": 4,
+      "warmup": false,
+      "startupRoundtripMs": 1147,
+      "memoryKb": {
+        "homeIdle": 278448,
+        "searchOpened": 316000,
+        "afterSearch": 337216,
+        "backToHome": 339472
+      },
+      "timings": {
+        "coldStartMs": 888,
+        "searchOpenColdMs": 65,
+        "searchOpenWarmMs": 24,
+        "searchRenderMs": 62,
+        "searchToHomeMs": 21,
+        "commandMs": 8
+      }
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "startupRoundtripMs": 1127,
+      "memoryKb": {
+        "homeIdle": 278496,
+        "searchOpened": 316000,
+        "afterSearch": 337184,
+        "backToHome": 339536
+      },
+      "timings": {
+        "coldStartMs": 890,
+        "searchOpenColdMs": 64,
+        "searchOpenWarmMs": 21,
+        "searchRenderMs": 59,
+        "searchToHomeMs": 21,
+        "commandMs": 7
+      }
+    }
+  ]
+}

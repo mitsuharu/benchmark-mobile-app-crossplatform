@@ -123,11 +123,15 @@ case "$FRAMEWORK/$PLATFORM" in
     # always runs the debug (JIT) build, whichever build this is asked for.
     # See flutter/README.md; the device results have the release numbers.
     mode=debug
-    [[ "$TARGET" == "device" ]] && mode="$BUILD"
     simulator=(--simulator)
-    [[ "$TARGET" == "device" ]] && simulator=()
+    if [[ "$TARGET" == "device" ]]; then
+      mode="$BUILD"
+      # An empty array cannot be expanded under `set -u` in bash 3.2, which is
+      # what macOS ships, so the flag is dropped by rebuilding the array.
+      simulator=()
+    fi
     (cd "$ROOT/flutter/app" &&
-      fvm flutter build ios --config-only "--$mode" "${simulator[@]}" \
+      fvm flutter build ios --config-only "--$mode" ${simulator[@]+"${simulator[@]}"} \
         --dart-define=BENCH_API_BASE_URL="$IOS_API_BASE_URL")
     # xcodebuild rather than `flutter build ios`, so a device build can be
     # signed with BENCH_IOS_TEAM_ID from the environment.
