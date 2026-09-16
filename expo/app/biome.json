@@ -19,11 +19,11 @@
       "!android",
       "!ios",
       "!artifacts",
-
-      "!build",
       "!.expo",
       "!coverage",
-      "!package-lock.json"
+      "!package-lock.json",
+      "!**/build",
+      "!**/.expo"
     ]
   },
   "formatter": {

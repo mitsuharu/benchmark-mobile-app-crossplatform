@@ -31,8 +31,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "./plugins/withCleartextLoopback"
-    ]
+    "plugins": ["./plugins/withCleartextLoopback"]
   }
 }
