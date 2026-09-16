@@ -30,7 +30,9 @@
   （キーワード・件数・上位 3 件）
 - **検索画面**: 受け取ったキーワードで GitHub Search API
   （`/search/repositories?q=<keyword>&sort=stars&order=desc&per_page=20`）を叩いて一覧表示する。
-  「リポジトリを検索」「ホームに戻る」の 2 ボタンと、キーワードを差し替えるボタンの列
+  「リポジトリを検索」「ホームに戻る」の 2 ボタンと、キーワードを差し替えるボタンの列。
+  ナビゲーションバー（タイトルバー）は出さない。1 つの実装にだけ出すと、その分が
+  `searchFirstFrame` に入って比較にならないため
 - **ホーム → 検索**: 画面生成時に渡すキーワードと、表示中の画面へのキーワード差し替えコマンド `setKeyword`
 - **検索 → ホーム**: `searchSucceeded`（`keyword`, `repositories[id, fullName, stars, language]`）と
   `searchFailed`（`keyword`, `message`）
