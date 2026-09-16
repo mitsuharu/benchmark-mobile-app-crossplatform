@@ -1,0 +1,57 @@
+name: NativeApp
+options:
+  bundleIdPrefix: com.example.benchmark
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "16.4"
+
+targets:
+  NativeApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: NativeApp
+    info:
+      path: NativeApp/Info.plist
+      properties:
+        CFBundleDisplayName: Native
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        # Lets the benchmark build reach bench/mock-server over plain http on
+        # the loopback address. Remote hosts still require https.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: false
+          NSAllowsLocalNetworking: true
+        # A physical device reaches bench/mock-server over the LAN, which iOS
+        # asks the user to allow once.
+        NSLocalNetworkUsageDescription: ベンチマーク用のモックサーバーに接続します。
+        # Empty means the real GitHub API; see AppConfig.swift.
+        BenchAPIBaseURL: $(BENCH_API_BASE_URL)
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.benchmark.nativeapp
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        # Overridden on the xcodebuild command line by the benchmark build,
+        # e.g. BENCH_API_BASE_URL=http://127.0.0.1:8787
+        BENCH_API_BASE_URL: ""
+    scheme:
+      testTargets:
+        - NativeAppTests
+
+  NativeAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: NativeAppTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.benchmark.nativeapp.tests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: NativeApp
