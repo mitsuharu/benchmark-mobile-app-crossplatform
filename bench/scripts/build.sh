@@ -115,8 +115,8 @@ first_scheme() {
 case "$FRAMEWORK/$PLATFORM" in
   native/ios)
     (cd "$ROOT/native/ios" && xcodegen generate --quiet)
-    build_ios_app "$ROOT/native/ios" App \
-      -project "$ROOT/native/ios/App.xcodeproj" -scheme App \
+    build_ios_app "$ROOT/native/ios" NativeApp \
+      -project "$ROOT/native/ios/NativeApp.xcodeproj" -scheme NativeApp \
       BENCH_API_BASE_URL="$IOS_API_BASE_URL"
     ;;
   native/android)
