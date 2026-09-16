@@ -39,6 +39,10 @@ export const COMMAND_APPLIED_TEXT = 'keyword: swift'
 
 export const WAIT_MS = 30_000
 
+/** How many times "back" is tapped before the run is given up on. */
+const BACK_ATTEMPTS = 3
+const BACK_WAIT_MS = 5_000
+
 /** Taps a control given as a selector or as `{ find: text }` (see SELECTORS). */
 export function tap(device, target) {
   return device.call(
@@ -87,9 +91,22 @@ export async function runScenario(
     await device.call(['press', selectors.openSearch])
     await device.call(['wait', 'text', SEARCH_BUTTON_TEXT, String(WAIT_MS)])
   }
+  // The second visit taps "back" as soon as the screen's text is there, which
+  // can be while it is still animating in — a tap then lands on a moving
+  // target and does nothing. Tap again rather than fail the whole run.
   const backToHome = async () => {
-    await tap(device, selectors.back)
-    await device.call(['wait', selectors.openSearch, String(WAIT_MS)])
+    for (let attempt = 0; ; attempt++) {
+      await tap(device, selectors.back)
+      const timeout = attempt < BACK_ATTEMPTS - 1 ? BACK_WAIT_MS : WAIT_MS
+      try {
+        await device.call(['wait', selectors.openSearch, String(timeout)])
+        return
+      } catch (error) {
+        if (attempt >= BACK_ATTEMPTS - 1) {
+          throw error
+        }
+      }
+    }
   }
 
   const opened = await device.call(
