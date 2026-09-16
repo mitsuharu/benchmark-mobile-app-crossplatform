@@ -1,0 +1,227 @@
+{
+  "framework": "native",
+  "platform": "android",
+  "build": "release",
+  "physical": true,
+  "appId": "com.example.benchmark.nativeapp",
+  "device": {
+    "name": "P780",
+    "id": "26eab1c3",
+    "label": "Rakuten Hand 5G 実機（Android 11）"
+  },
+  "measuredAt": "2026-09-16T10:40:53.162Z",
+  "agentDevice": "0.21.1",
+  "iterations": 5,
+  "warmup": 1,
+  "appSizeBytes": 1230525,
+  "summary": {
+    "timingsMs": {
+      "coldStartMs": {
+        "n": 5,
+        "median": 172,
+        "mean": 174.8,
+        "min": 164,
+        "max": 189,
+        "stdev": 9.703607576566563
+      },
+      "searchOpenColdMs": {
+        "n": 5,
+        "median": 93,
+        "mean": 92.8,
+        "min": 83,
+        "max": 103,
+        "stdev": 7.222188034107115
+      },
+      "searchOpenWarmMs": {
+        "n": 5,
+        "median": 86,
+        "mean": 85.8,
+        "min": 81,
+        "max": 91,
+        "stdev": 3.31058907144937
+      },
+      "searchRenderMs": {
+        "n": 5,
+        "median": 85,
+        "mean": 87.8,
+        "min": 76,
+        "max": 99,
+        "stdev": 8.23164625090267
+      },
+      "searchToHomeMs": {
+        "n": 5,
+        "median": 29,
+        "mean": 28.6,
+        "min": 25,
+        "max": 32,
+        "stdev": 2.416609194718914
+      },
+      "commandMs": {
+        "n": 5,
+        "median": 22,
+        "mean": 24,
+        "min": 21,
+        "max": 28,
+        "stdev": 3.286335345030997
+      }
+    },
+    "memoryKb": {
+      "homeIdle": {
+        "n": 5,
+        "median": 40069,
+        "mean": 40800.6,
+        "min": 40048,
+        "max": 41998,
+        "stdev": 912.221376640561
+      },
+      "searchOpened": {
+        "n": 5,
+        "median": 41203,
+        "mean": 41810.4,
+        "min": 40986,
+        "max": 43271,
+        "stdev": 935.670369307482
+      },
+      "afterSearch": {
+        "n": 5,
+        "median": 51897,
+        "mean": 52050,
+        "min": 49423,
+        "max": 54102,
+        "stdev": 1768.9506493964154
+      },
+      "backToHome": {
+        "n": 5,
+        "median": 45360,
+        "mean": 45584.2,
+        "min": 43831,
+        "max": 47716,
+        "stdev": 1319.745793704227
+      }
+    },
+    "startupRoundtripMs": {
+      "n": 5,
+      "median": 819,
+      "mean": 829.8,
+      "min": 804,
+      "max": 867,
+      "stdev": 22.265668640308107
+    }
+  },
+  "runs": [
+    {
+      "index": 0,
+      "warmup": true,
+      "startupRoundtripMs": 830,
+      "memoryKb": {
+        "homeIdle": 51872,
+        "searchOpened": 54273,
+        "afterSearch": 64443,
+        "backToHome": 58157
+      },
+      "timings": {
+        "coldStartMs": 197,
+        "searchOpenColdMs": 121,
+        "searchOpenWarmMs": 87,
+        "searchRenderMs": 149,
+        "searchToHomeMs": 62,
+        "commandMs": 30
+      }
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "startupRoundtripMs": 867,
+      "memoryKb": {
+        "homeIdle": 41834,
+        "searchOpened": 42569,
+        "afterSearch": 53871,
+        "backToHome": 47716
+      },
+      "timings": {
+        "coldStartMs": 189,
+        "searchOpenColdMs": 103,
+        "searchOpenWarmMs": 86,
+        "searchRenderMs": 84,
+        "searchToHomeMs": 29,
+        "commandMs": 21
+      }
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "startupRoundtripMs": 819,
+      "memoryKb": {
+        "homeIdle": 41998,
+        "searchOpened": 43271,
+        "afterSearch": 54102,
+        "backToHome": 46224
+      },
+      "timings": {
+        "coldStartMs": 166,
+        "searchOpenColdMs": 93,
+        "searchOpenWarmMs": 87,
+        "searchRenderMs": 99,
+        "searchToHomeMs": 32,
+        "commandMs": 28
+      }
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "startupRoundtripMs": 842,
+      "memoryKb": {
+        "homeIdle": 40069,
+        "searchOpened": 41203,
+        "afterSearch": 51897,
+        "backToHome": 45360
+      },
+      "timings": {
+        "coldStartMs": 183,
+        "searchOpenColdMs": 98,
+        "searchOpenWarmMs": 91,
+        "searchRenderMs": 85,
+        "searchToHomeMs": 25,
+        "commandMs": 28
+      }
+    },
+    {
+      "index": 4,
+      "warmup": false,
+      "startupRoundtripMs": 817,
+      "memoryKb": {
+        "homeIdle": 40054,
+        "searchOpened": 40986,
+        "afterSearch": 50957,
+        "backToHome": 44790
+      },
+      "timings": {
+        "coldStartMs": 172,
+        "searchOpenColdMs": 87,
+        "searchOpenWarmMs": 81,
+        "searchRenderMs": 76,
+        "searchToHomeMs": 27,
+        "commandMs": 21
+      }
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "startupRoundtripMs": 804,
+      "memoryKb": {
+        "homeIdle": 40048,
+        "searchOpened": 41023,
+        "afterSearch": 49423,
+        "backToHome": 43831
+      },
+      "timings": {
+        "coldStartMs": 164,
+        "searchOpenColdMs": 83,
+        "searchOpenWarmMs": 84,
+        "searchRenderMs": 95,
+        "searchToHomeMs": 30,
+        "commandMs": 22
+      }
+    }
+  ]
+}
