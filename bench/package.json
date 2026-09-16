@@ -1,0 +1,20 @@
+{
+  "name": "bench",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "mock-server": "node mock-server/server.mjs",
+    "build:app": "bash scripts/build.sh",
+    "bench": "node run.mjs",
+    "report": "node report.mjs",
+    "demo": "node demo.mjs",
+    "lint": "biome check",
+    "lint:fix": "biome check --write",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.10",
+    "agent-device": "0.21.1"
+  }
+}
