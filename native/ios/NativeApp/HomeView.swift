@@ -104,9 +104,10 @@ struct HomeView: View {
       .navigationDestination(for: Route.self) { route in
         switch route {
         case .repoSearch(let keyword):
+          // No navigation bar: the Flutter and Expo search screens have none
+          // either, and laying one out would land in `searchFirstFrame`.
           RepoSearchView(keyword: keyword, apiBaseURL: AppConfig.apiBaseURL)
-            .navigationTitle("Repo Search")
-            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .navigationBar)
         }
       }
       .onAppear { BenchMarker.markLaunch() }
