@@ -464,6 +464,19 @@ Android（Rakuten Hand 5G、Snapdragon 480 5G）:
 - **CPU の遅い実機では Expo（React Native）の JS 実行が効いてきます。** Rakuten Hand 5G では検索 → 描画が
   native の 2.5 倍、検索結果の受け渡しが 3.5 倍でした。Flutter にはこの傾向が出ません。
 
+## もう 1 つの計測：QR コードのデコード
+
+同じ 3 実装で「アプリに同梱した QR 画像 500 枚を順にデコードする」時間も測っています。
+React Native は `react-native-nitro-zxing`、ほかは各スタックの標準（iOS は Vision、Android は ML Kit、
+Flutter は `mobile_scanner`）を使い、実機のリリースビルドだけで比べたものです。
+
+| | native | Flutter | Expo |
+| --- | ---: | ---: | ---: |
+| iPhone XR（1 枚あたり） | 26.44 ms | 30.26 ms | **3.57 ms** |
+| Rakuten Hand 5G（1 枚あたり） | 32.80 ms | 34.71 ms | **9.70 ms** |
+
+詳しい条件・表・動作の録画は [qr/README.md](qr/README.md) にあります。
+
 ## 計測をやり直す
 
 手順は [run-benchmark スキル](.claude/skills/run-benchmark/SKILL.md) にまとめています。概略は次のとおりです。

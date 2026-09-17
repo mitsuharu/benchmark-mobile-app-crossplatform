@@ -1,0 +1,164 @@
+{
+  "framework": "expo",
+  "platform": "android",
+  "build": "release",
+  "physical": true,
+  "appId": "com.example.benchmark.qr.expoapp",
+  "device": {
+    "name": "P780",
+    "id": "26eab1c3",
+    "label": "Rakuten Hand 5G 実機（Android 11）"
+  },
+  "measuredAt": "2026-09-17T00:43:57.847Z",
+  "agentDevice": "0.21.1",
+  "iterations": 5,
+  "warmup": 1,
+  "images": 500,
+  "appSizeBytes": 111609120,
+  "summary": {
+    "coldStartMs": {
+      "n": 5,
+      "median": 325,
+      "mean": 336.8,
+      "min": 318,
+      "max": 395,
+      "stdev": 29.21917178839948
+    },
+    "totalMs": {
+      "n": 5,
+      "median": 5116,
+      "mean": 5016,
+      "min": 4182,
+      "max": 5334,
+      "stdev": 428.3475224627779
+    },
+    "memoryKb": {
+      "n": 5,
+      "median": 97235,
+      "mean": 95602.6,
+      "min": 85948,
+      "max": 99909,
+      "stdev": 4942.212888979996
+    },
+    "decodedCount": {
+      "n": 5,
+      "median": 500,
+      "mean": 500,
+      "min": 500,
+      "max": 500,
+      "stdev": 0
+    },
+    "perImageMs": {
+      "n": 5,
+      "median": 9.6985,
+      "mean": 9.560300000000002,
+      "min": 9.035,
+      "max": 10.254999999999999,
+      "stdev": 0.46611603705515153
+    }
+  },
+  "runs": [
+    {
+      "index": 0,
+      "warmup": true,
+      "coldStartMs": 510,
+      "totalMs": 4182,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 7.6025,
+        "mean": 8.340954000000004,
+        "min": 6.465,
+        "max": 34.611,
+        "stdev": 2.551581729023
+      },
+      "memoryKb": 110446
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "coldStartMs": 318,
+      "totalMs": 4182,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 9.045000000000002,
+        "mean": 10.201799999999999,
+        "min": 5.928,
+        "max": 36.254,
+        "stdev": 3.7938066729869093
+      },
+      "memoryKb": 99909
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "coldStartMs": 321,
+      "totalMs": 5114,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 9.035,
+        "mean": 10.204864000000011,
+        "min": 6.04,
+        "max": 28.446,
+        "stdev": 3.3464976434332057
+      },
+      "memoryKb": 96827
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "coldStartMs": 395,
+      "totalMs": 5116,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 9.768,
+        "mean": 10.786395999999995,
+        "min": 6.051,
+        "max": 48.787,
+        "stdev": 3.9217276074689327
+      },
+      "memoryKb": 85948
+    },
+    {
+      "index": 4,
+      "warmup": false,
+      "coldStartMs": 325,
+      "totalMs": 5334,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 9.6985,
+        "mean": 10.632994,
+        "min": 5.835,
+        "max": 31.077,
+        "stdev": 3.447546591703148
+      },
+      "memoryKb": 97235
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "coldStartMs": 325,
+      "totalMs": 5334,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 10.254999999999999,
+        "mean": 11.010130000000002,
+        "min": 6.269,
+        "max": 41.821,
+        "stdev": 3.511355697889349
+      },
+      "memoryKb": 98094
+    }
+  ]
+}

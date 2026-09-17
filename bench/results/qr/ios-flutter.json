@@ -1,0 +1,164 @@
+{
+  "framework": "flutter",
+  "platform": "ios",
+  "build": "release",
+  "physical": true,
+  "appId": "com.example.benchmark.qr.qrflutterapp",
+  "device": {
+    "name": "mitsuharu-iPhoneXR",
+    "id": "00008020-0001458614C3002E",
+    "label": "iPhone XR 実機（iOS 18.7）"
+  },
+  "measuredAt": "2026-09-17T00:51:14.319Z",
+  "agentDevice": "0.21.1",
+  "iterations": 5,
+  "warmup": 1,
+  "images": 500,
+  "appSizeBytes": 18939370,
+  "summary": {
+    "coldStartMs": {
+      "n": 5,
+      "median": 262,
+      "mean": 266,
+      "min": 254,
+      "max": 290,
+      "stdev": 12.649110640673518
+    },
+    "totalMs": {
+      "n": 5,
+      "median": 16076,
+      "mean": 16026.8,
+      "min": 15699,
+      "max": 16270,
+      "stdev": 186.63268738353418
+    },
+    "memoryKb": {
+      "n": 5,
+      "median": 113696,
+      "mean": 113782.4,
+      "min": 113232,
+      "max": 114256,
+      "stdev": 366.34060653987024
+    },
+    "decodedCount": {
+      "n": 5,
+      "median": 500,
+      "mean": 500,
+      "min": 500,
+      "max": 500,
+      "stdev": 0
+    },
+    "perImageMs": {
+      "n": 5,
+      "median": 30.256,
+      "mean": 30.305600000000005,
+      "min": 29.986,
+      "max": 30.643,
+      "stdev": 0.2544919252157126
+    }
+  },
+  "runs": [
+    {
+      "index": 0,
+      "warmup": true,
+      "coldStartMs": 262,
+      "totalMs": 15561,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 29.465,
+        "mean": 31.241556000000028,
+        "min": 16.692,
+        "max": 224.525,
+        "stdev": 10.811894295953136
+      },
+      "memoryKb": 113504
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "coldStartMs": 290,
+      "totalMs": 16092,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 30.5505,
+        "mean": 32.179136,
+        "min": 19.539,
+        "max": 177.96,
+        "stdev": 8.554792200486462
+      },
+      "memoryKb": 113616
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "coldStartMs": 254,
+      "totalMs": 15699,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 29.986,
+        "mean": 31.394608000000034,
+        "min": 18.082,
+        "max": 179.399,
+        "stdev": 8.503729804170403
+      },
+      "memoryKb": 113696
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "coldStartMs": 262,
+      "totalMs": 16076,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 30.256,
+        "mean": 32.14945999999996,
+        "min": 17.469,
+        "max": 182.679,
+        "stdev": 8.940877482909606
+      },
+      "memoryKb": 114112
+    },
+    {
+      "index": 4,
+      "warmup": false,
+      "coldStartMs": 258,
+      "totalMs": 16270,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 30.643,
+        "mean": 32.53556,
+        "min": 18.854,
+        "max": 181.298,
+        "stdev": 8.64267073087943
+      },
+      "memoryKb": 113232
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "coldStartMs": 266,
+      "totalMs": 15997,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 30.0925,
+        "mean": 31.989618000000004,
+        "min": 18.416,
+        "max": 170.479,
+        "stdev": 8.503527975145138
+      },
+      "memoryKb": 114256
+    }
+  ]
+}

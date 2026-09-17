@@ -1,0 +1,164 @@
+{
+  "framework": "flutter",
+  "platform": "android",
+  "build": "release",
+  "physical": true,
+  "appId": "com.example.benchmark.qr.qrflutterapp",
+  "device": {
+    "name": "P780",
+    "id": "26eab1c3",
+    "label": "Rakuten Hand 5G 実機（Android 11）"
+  },
+  "measuredAt": "2026-09-17T00:42:29.276Z",
+  "agentDevice": "0.21.1",
+  "iterations": 5,
+  "warmup": 1,
+  "images": 500,
+  "appSizeBytes": 64673370,
+  "summary": {
+    "coldStartMs": {
+      "n": 5,
+      "median": 128,
+      "mean": 128.2,
+      "min": 123,
+      "max": 137,
+      "stdev": 4.955804677345546
+    },
+    "totalMs": {
+      "n": 5,
+      "median": 17786,
+      "mean": 18251.6,
+      "min": 17717,
+      "max": 20040,
+      "stdev": 897.5889036747279
+    },
+    "memoryKb": {
+      "n": 5,
+      "median": 102672,
+      "mean": 102326,
+      "min": 99546,
+      "max": 103561,
+      "stdev": 1452.1943396116098
+    },
+    "decodedCount": {
+      "n": 5,
+      "median": 500,
+      "mean": 500,
+      "min": 500,
+      "max": 500,
+      "stdev": 0
+    },
+    "perImageMs": {
+      "n": 5,
+      "median": 34.714,
+      "mean": 34.820299999999996,
+      "min": 34.663,
+      "max": 35.0955,
+      "stdev": 0.17745269792257543
+    }
+  },
+  "runs": [
+    {
+      "index": 0,
+      "warmup": true,
+      "coldStartMs": 353,
+      "totalMs": 20040,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 39.2885,
+        "mean": 40.075987999999995,
+        "min": 29.359,
+        "max": 132.111,
+        "stdev": 6.095536373762032
+      },
+      "memoryKb": 130325
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "coldStartMs": 137,
+      "totalMs": 20040,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 34.663,
+        "mean": 35.56702400000003,
+        "min": 24.81,
+        "max": 135.968,
+        "stdev": 6.534810435156019
+      },
+      "memoryKb": 102450
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "coldStartMs": 128,
+      "totalMs": 17786,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 34.965500000000006,
+        "mean": 35.893384,
+        "min": 25.361,
+        "max": 132.416,
+        "stdev": 6.2688816652209995
+      },
+      "memoryKb": 102672
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "coldStartMs": 123,
+      "totalMs": 17949,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 34.714,
+        "mean": 35.52749000000002,
+        "min": 24.932,
+        "max": 84.359,
+        "stdev": 4.718360280637755
+      },
+      "memoryKb": 99546
+    },
+    {
+      "index": 4,
+      "warmup": false,
+      "coldStartMs": 129,
+      "totalMs": 17766,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 34.6635,
+        "mean": 35.42970400000001,
+        "min": 25.407,
+        "max": 120.445,
+        "stdev": 5.4807892712987965
+      },
+      "memoryKb": 103401
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "coldStartMs": 124,
+      "totalMs": 17717,
+      "images": 500,
+      "decodedCount": 500,
+      "perImageMs": {
+        "n": 500,
+        "median": 35.0955,
+        "mean": 35.99707600000003,
+        "min": 25.584,
+        "max": 108.004,
+        "stdev": 5.448494373514943
+      },
+      "memoryKb": 103561
+    }
+  ]
+}

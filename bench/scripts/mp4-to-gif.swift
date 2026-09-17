@@ -1,8 +1,10 @@
-#!/usr/bin/env swift  //
-// Converts a screen recording into a small looping GIF for the README, with
-// nothing but the frameworks that ship with macOS (no ffmpeg needed).
+#!/usr/bin/env swift  //  // Converts a screen recording into a small looping GIF for the README, with  // nothing but the frameworks that ship with macOS (no ffmpeg needed).
 //
-//   swift scripts/mp4-to-gif.swift <in.mp4> <out.gif> [width] [fps]
+//   swift scripts/mp4-to-gif.swift <in.mp4> <out.gif> [width] [fps] [seconds] [top]
+//
+// `seconds` trims the recording, so several GIFs meant to be read side by side
+// can be made the same length whatever the recorder handed over. `top` keeps
+// only that fraction of the height, for a screen whose lower half is empty.
 //
 // Frames that look the same as the one before are merged into one longer
 // frame, so the still parts of a recording cost almost nothing. The last
@@ -16,17 +18,20 @@ import UniformTypeIdentifiers
 let arguments = CommandLine.arguments
 guard arguments.count >= 3 else {
   FileHandle.standardError.write(
-    Data("usage: mp4-to-gif.swift <in.mp4> <out.gif> [width] [fps]\n".utf8))
+    Data("usage: mp4-to-gif.swift <in.mp4> <out.gif> [width] [fps] [seconds] [top]\n".utf8))
   exit(1)
 }
 let input = URL(fileURLWithPath: arguments[1])
 let output = URL(fileURLWithPath: arguments[2])
 let width = arguments.count > 3 ? Int(arguments[3]) ?? 280 : 280
 let fps = arguments.count > 4 ? Double(arguments[4]) ?? 8 : 8
+let limitSeconds = arguments.count > 5 ? Double(arguments[5]) : nil
+let topFraction = arguments.count > 6 ? Double(arguments[6]) ?? 1 : 1
 let finalHoldSeconds = 1.5
 
 let asset = AVURLAsset(url: input)
-let duration = try await asset.load(.duration).seconds
+let recorded = try await asset.load(.duration).seconds
+let duration = min(recorded, limitSeconds ?? recorded)
 
 let generator = AVAssetImageGenerator(asset: asset)
 generator.appliesPreferredTrackTransform = true
@@ -57,8 +62,17 @@ var frames: [(image: CGImage, delay: Double)] = []
 var previousPixels: Data?
 let step = 1 / fps
 var time = 0.0
+/// Keeps the top `topFraction` of the frame, where the screen has content.
+func cropped(_ image: CGImage) -> CGImage {
+  guard topFraction < 1 else { return image }
+  let height = max(1, Int(Double(image.height) * topFraction))
+  let rect = CGRect(x: 0, y: 0, width: image.width, height: height)
+  return image.cropping(to: rect) ?? image
+}
+
 while time < duration {
-  let image = try await generator.image(at: CMTime(seconds: time, preferredTimescale: 600)).image
+  let image = cropped(
+    try await generator.image(at: CMTime(seconds: time, preferredTimescale: 600)).image)
   let current = pixels(of: image)
   if current == previousPixels, !frames.isEmpty {
     frames[frames.count - 1].delay += step

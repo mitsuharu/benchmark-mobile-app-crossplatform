@@ -1,0 +1,27 @@
+name: qrflutterapp
+description: "The QR decode benchmark, written entirely in Flutter."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # The standard Flutter barcode package: ML Kit on Android, Apple Vision on
+  # iOS — the same engines the native implementation calls directly.
+  mobile_scanner: ^7.1.4
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # Filled by qr/scripts/sync-images.sh.
+    - assets/qr/

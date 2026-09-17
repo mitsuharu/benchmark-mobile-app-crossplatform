@@ -1,0 +1,50 @@
+name: QrNativeApp
+options:
+  bundleIdPrefix: com.example.benchmark.qr
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "16.4"
+
+targets:
+  QrNativeApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: QrApp
+        excludes:
+          - qr
+      # A folder reference, so the images land in the app as a `qr` directory
+      # with their own names. qr/scripts/sync-images.sh fills it.
+      - path: QrApp/qr
+        type: folder
+    info:
+      path: QrApp/Info.plist
+      properties:
+        CFBundleDisplayName: QR Native
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.benchmark.qr.nativeapp
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+    scheme:
+      testTargets:
+        - QrNativeAppTests
+
+  QrNativeAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: QrAppTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.benchmark.qr.nativeapp.tests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: QrNativeApp
