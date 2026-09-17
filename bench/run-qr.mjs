@@ -118,11 +118,9 @@ async function measure(framework) {
           // On a physical iPhone `logs clear --restart` has just relaunched
           // the app to capture its output; relaunching again would start a
           // process whose markers never reach the log.
-          if (!(platform === 'ios')) {
-            await device.call(['open', id, '--relaunch'])
-          } else {
-            await device.call(['open', id])
-          }
+          await device.call(
+            platform === 'ios' ? ['open', id] : ['open', id, '--relaunch'],
+          )
           await device.call(['wait', selectors.start, String(QR_WAIT_MS)])
           await device.call(['press', selectors.start])
           await device.call([
