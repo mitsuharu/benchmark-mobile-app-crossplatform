@@ -5,6 +5,10 @@
 # searches to bench/mock-server.
 #
 #   ./scripts/build.sh <native|flutter|expo> <ios|android> [release|debug] [simulator|device]
+#   ./scripts/build.sh <qr-native|qr-flutter|qr-expo> <ios|android> release [device]
+#
+# The `qr-` builds are the QR decode benchmark in qr/ (see its README). They
+# are measured on physical devices in release only.
 #
 # release (the default) is what the main results compare. debug builds every
 # part the way a developer runs it day to day: Xcode's Debug configuration,
@@ -24,7 +28,7 @@
 
 set -euo pipefail
 
-FRAMEWORK="${1:?framework: native, flutter or expo}"
+FRAMEWORK="${1:?framework: native, flutter, expo, or one of the qr- ones}"
 PLATFORM="${2:?platform: ios or android}"
 BUILD="${3:-release}"
 TARGET="${4:-simulator}"
@@ -163,6 +167,52 @@ case "$FRAMEWORK/$PLATFORM" in
     (cd "$ROOT/expo/app" && npx expo prebuild --platform android --clean)
     (cd "$ROOT/expo/app/android" && ./gradlew "assemble$CONFIG")
     copy_apk "$ROOT/expo/app/android/app/build/outputs/apk/$BUILD/app-$BUILD.apk"
+    ;;
+  qr-native/ios)
+    "$ROOT/qr/scripts/sync-images.sh"
+    (cd "$ROOT/qr/native/ios" && xcodegen generate --quiet)
+    build_ios_app "$ROOT/qr/native/ios" QrNativeApp \
+      -project "$ROOT/qr/native/ios/QrNativeApp.xcodeproj" -scheme QrNativeApp
+    ;;
+  qr-native/android)
+    "$ROOT/qr/scripts/sync-images.sh"
+    (cd "$ROOT/qr/native/android" && ./gradlew "assemble$CONFIG" --quiet)
+    copy_apk "$ROOT/qr/native/android/app/build/outputs/apk/$BUILD/app-$BUILD.apk"
+    ;;
+  qr-flutter/ios)
+    "$ROOT/qr/scripts/sync-images.sh"
+    mode="$BUILD"
+    simulator=(--simulator)
+    if [[ "$TARGET" == "device" ]]; then
+      simulator=()
+    else
+      # Flutter has no release build for the simulator; see flutter/README.md.
+      mode=debug
+    fi
+    (cd "$ROOT/qr/flutter/app" &&
+      fvm flutter build ios --config-only "--$mode" ${simulator[@]+"${simulator[@]}"})
+    CONFIG="$(tr '[:lower:]' '[:upper:]' <<< "${mode:0:1}")${mode:1}"
+    build_ios_app "$ROOT/qr/flutter/app/ios" Runner \
+      -workspace "$ROOT/qr/flutter/app/ios/Runner.xcworkspace" -scheme Runner
+    ;;
+  qr-flutter/android)
+    "$ROOT/qr/scripts/sync-images.sh"
+    (cd "$ROOT/qr/flutter/app" && fvm flutter build apk "--$BUILD")
+    copy_apk "$ROOT/qr/flutter/app/build/app/outputs/flutter-apk/app-$BUILD.apk"
+    ;;
+  qr-expo/ios)
+    "$ROOT/qr/scripts/sync-images.sh"
+    (cd "$ROOT/qr/expo/app" && npx expo prebuild --platform ios --clean)
+    project="$(ls -d "$ROOT"/qr/expo/app/ios/*.xcodeproj | head -1)"
+    scheme="$(basename "$project" .xcodeproj)"
+    build_ios_app "$ROOT/qr/expo/app/ios" "$scheme" \
+      -workspace "${project%.xcodeproj}.xcworkspace" -scheme "$scheme"
+    ;;
+  qr-expo/android)
+    "$ROOT/qr/scripts/sync-images.sh"
+    (cd "$ROOT/qr/expo/app" && npx expo prebuild --platform android --clean)
+    (cd "$ROOT/qr/expo/app/android" && ./gradlew "assemble$CONFIG")
+    copy_apk "$ROOT/qr/expo/app/android/app/build/outputs/apk/$BUILD/app-$BUILD.apk"
     ;;
   *)
     echo "No benchmark build for $FRAMEWORK/$PLATFORM yet" >&2

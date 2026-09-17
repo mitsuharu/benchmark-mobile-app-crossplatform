@@ -1,0 +1,7 @@
+# Copies of qr/images made by qr/scripts/sync-images.sh. Only the canonical
+# set under qr/images is committed; each app's copy is a build input.
+native/ios/QrApp/qr/
+native/android/app/src/main/assets/qr/
+flutter/app/assets/qr/
+expo/app/assets/qr/
+flutter/app/lib/src/qr_assets.dart

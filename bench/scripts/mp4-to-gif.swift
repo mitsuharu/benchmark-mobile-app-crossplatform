@@ -1,5 +1,4 @@
-#!/usr/bin/env swift  //
-// Converts a screen recording into a small looping GIF for the README, with
+#!/usr/bin/env swift  //  // Converts a screen recording into a small looping GIF for the README, with
 // nothing but the frameworks that ship with macOS (no ffmpeg needed).
 //
 //   swift scripts/mp4-to-gif.swift <in.mp4> <out.gif> [width] [fps]
