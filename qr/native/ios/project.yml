@@ -32,3 +32,19 @@ targets:
         SWIFT_VERSION: "5.0"
         TARGETED_DEVICE_FAMILY: "1"
         CODE_SIGN_STYLE: Automatic
+    scheme:
+      testTargets:
+        - QrNativeAppTests
+
+  QrNativeAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: QrAppTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.benchmark.qr.nativeapp.tests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: QrNativeApp

@@ -129,12 +129,13 @@ React Native: コミット後の `requestAnimationFrame`）。
 | --- | --- |
 | `.node-version` | Node.js。`actions/setup-node` の `node-version-file` も読む |
 | `.xcode-version` | Xcode。CI ではランナー同梱の `xcodes` で選択する |
-| `flutter/.fvmrc` | Flutter SDK（FVM） |
+| `flutter/.fvmrc` / `qr/flutter/.fvmrc` | Flutter SDK（FVM）。2 つのアプリは同じ版に揃える |
 | `*/gradle/wrapper/gradle-wrapper.properties` | Gradle |
 
 ## CI
 
 - 実装ごとにワークフローを分け、`paths` で対象ディレクトリの変更時だけ走らせる。
+  QR のベンチマーク（`qr/`）は `qr.yml` にまとめる。
 - アクションはコミット SHA で固定し、行末にバージョンをコメントで書く。
 - npm は [Aikido Safe Chain](.github/actions/setup-safe-chain) を通し、`.npmrc` の `min-release-age=3` で
   公開直後のバージョンを避ける。

@@ -32,3 +32,7 @@ Runner/GeneratedPluginRegistrant.*
 !default.mode2v3
 !default.pbxuser
 !default.perspectivev3
+
+# Build output. bench/scripts/build.sh points SYMROOT / OBJROOT here so each
+# implementation's build stays out of the others'.
+build/

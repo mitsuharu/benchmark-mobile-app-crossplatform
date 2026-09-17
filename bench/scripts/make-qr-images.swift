@@ -1,5 +1,4 @@
-#!/usr/bin/env swift  //
-// Generates the QR code images the decode benchmark reads.
+#!/usr/bin/env swift  //  // Generates the QR code images the decode benchmark reads.
 //
 //   swift bench/scripts/make-qr-images.swift <out-dir> [count] [pixels]
 //

@@ -141,8 +141,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flex: 1,
     gap: 12,
-    justifyContent: 'center',
+    // Top-aligned like the native and Flutter apps, so the three screens
+    // line up in the README's recordings.
     paddingHorizontal: 24,
+    paddingTop: 64,
   },
   title: {
     fontSize: 24,
